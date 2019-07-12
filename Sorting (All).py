@@ -1,5 +1,4 @@
 lis = [1,5,2,7,3,1,56,23,5,6,9,3]
-new_lis = []
 
 def bubble_sort(lis):
     for i in range(len(lis)-2):
@@ -30,3 +29,23 @@ def selection_sort(lis):
     return lis
 
 print(selection_sort(lis))
+
+
+lis = [1,5,2,7,3,1,56,23,5,6,9,3]
+
+
+def insertion_sort(lis):
+     for i in range(1,len(lis)):
+        value = lis[i]
+        pos = i
+
+        while pos>0 and value < lis[pos-1]:
+
+            lis[pos] = lis[pos-1]
+            pos = pos-1
+
+        lis[pos] = value
+
+     return lis
+
+print(insertion_sort(lis))
