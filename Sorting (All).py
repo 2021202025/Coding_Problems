@@ -49,3 +49,32 @@ def insertion_sort(lis):
      return lis
 
 print(insertion_sort(lis))
+
+lis = [1,0,5,2,7,3,1,56,23,5,6,9,3]
+
+
+def shell_sort(lis):
+
+    sub_lis_count = len(lis)//2
+
+    while sub_lis_count > 0:
+        for start in range(sub_lis_count):
+            gap_insertion_sort(lis,start,sub_lis_count)
+        sub_lis_count = sub_lis_count//2
+
+    return lis
+
+def gap_insertion_sort(arr,start,gap):
+
+    for i in range(start+gap, len(arr), gap):
+
+        value = arr[i]
+        pos = i
+        while pos >= gap and arr[pos-gap] > value:
+            arr[pos] = arr[pos-gap]
+            pos = pos-gap
+
+        arr[pos] = value
+
+
+print(shell_sort(lis))
