@@ -152,3 +152,52 @@ def mergesort(lst):
     return merge(left, right)
 
 print(mergesort(lis))
+
+
+
+lis = [1,5,2,7,3,1,56,23,5,6,9,3]
+
+def quick_sort(lis):
+
+    quick_sort_splits(lis, 0, len(lis)-1)
+    return lis
+
+def quick_sort_splits(lis, first, last):
+    if first < last:
+        splitpoint = quick_partition(lis, first, last)
+
+        quick_sort_splits(lis, first, splitpoint-1)
+        quick_sort_splits(lis, splitpoint+1, last)
+
+
+def quick_partition(lis, first, last):
+    pivot = lis[first]
+
+    leftMark = first+1
+    rightMark = last
+
+    done = False
+
+    while not done:
+
+        while leftMark <= rightMark and lis[leftMark] <= pivot:
+            leftMark += 1
+
+        while rightMark >= leftMark and lis[rightMark] >= pivot:
+            rightMark -= 1
+
+        if rightMark < leftMark:
+            done = True
+
+        else:
+            temp = lis[rightMark]
+            lis[rightMark] = lis[leftMark]
+            lis[leftMark] = temp
+
+    temp = lis[first]
+    lis[first] = lis[rightMark]
+    lis[rightMark] = temp
+
+    return rightMark
+
+print(quick_sort(lis))
