@@ -78,3 +78,77 @@ def gap_insertion_sort(arr,start,gap):
 
 
 print(shell_sort(lis))
+
+
+
+
+lis = [1,5,2,7,3,1,56,23,5,6,9,3]
+
+
+def merge_sort(lis):
+
+    if len(lis) > 1:
+        mid = len(lis)//2
+        leftHalf = lis[:mid]
+        rightHalf = lis[mid:]
+
+        merge_sort(leftHalf)
+        merge_sort(rightHalf)
+
+        i=0
+        j=0
+        k=0
+
+        while i<len(leftHalf) and j<len(rightHalf):
+            if leftHalf[i] < rightHalf[j]:
+                lis[k] = leftHalf[i]
+                i += 1
+            else:
+                lis[k] = rightHalf[j]
+                j += 1
+
+            k += 1
+
+
+        while i < len(leftHalf):
+            lis[k] = leftHalf[i]
+            i += 1
+            k += 1
+
+        while j < len(rightHalf):
+            lis[k] = rightHalf[j]
+            j += 1
+            k += 1
+
+    return lis
+
+print(merge_sort(lis))
+
+lis = [1,5,2,7,3,1,56,23,5,6,9,3]
+
+def merge(left, right):
+    result = []
+    i, j = 0, 0
+
+    while i < len(left) and j < len(right):
+        if left[i] <= right[j]:
+            result.append(left[i])
+            i += 1
+        else:
+            result.append(right[j])
+            j += 1
+
+    result += left[i:]
+    result += right[j:]
+    return result
+
+
+def mergesort(lst):
+    if (len(lst) <= 1):
+        return lst
+    mid = int(len(lst) / 2)
+    left = mergesort(lst[:mid])
+    right = mergesort(lst[mid:])
+    return merge(left, right)
+
+print(mergesort(lis))
